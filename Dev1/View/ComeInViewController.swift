@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ComeInViewController.swift
 //  Dev1
 //
 //  Created by Даниил Сивожелезов on 20.07.2024.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ComeInViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
 }
-
