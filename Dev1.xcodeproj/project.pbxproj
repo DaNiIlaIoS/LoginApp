@@ -19,6 +19,9 @@
 		48180C202C4BB09C00FC8847 /* StackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */; };
 		48180C242C4BD41100FC8847 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C232C4BD41100FC8847 /* UserData.swift */; };
 		48180C262C4BD7B800FC8847 /* ComeInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C252C4BD7B800FC8847 /* ComeInViewController.swift */; };
+		48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */; };
+		48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */; };
+		48180C2F2C4D017400FC8847 /* ComeInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2E2C4D017400FC8847 /* ComeInPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Ex.swift"; sourceTree = "<group>"; };
 		48180C232C4BD41100FC8847 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		48180C252C4BD7B800FC8847 /* ComeInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComeInViewController.swift; sourceTree = "<group>"; };
+		48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		48180C2E2C4D017400FC8847 /* ComeInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComeInPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 				48180C012C4BA55E00FC8847 /* SceneDelegate.swift */,
 				48180C132C4BA7FD00FC8847 /* Model */,
 				48180C142C4BA80300FC8847 /* View */,
+				48180C292C4C01AC00FC8847 /* Presenter */,
 				48180C152C4BA81500FC8847 /* CustomUI */,
 				48180C1E2C4BB08100FC8847 /* Extensions */,
 				48180C082C4BA55F00FC8847 /* Assets.xcassets */,
@@ -94,6 +101,7 @@
 			children = (
 				48180C032C4BA55E00FC8847 /* RegistrationViewController.swift */,
 				48180C252C4BD7B800FC8847 /* ComeInViewController.swift */,
+				48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +123,15 @@
 				48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		48180C292C4C01AC00FC8847 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */,
+				48180C2E2C4D017400FC8847 /* ComeInPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,11 +207,14 @@
 				48180C172C4BA83D00FC8847 /* CustomTextField.swift in Sources */,
 				48180C1B2C4BACE400FC8847 /* CustomLabel.swift in Sources */,
 				48180C042C4BA55E00FC8847 /* RegistrationViewController.swift in Sources */,
+				48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */,
 				48180C262C4BD7B800FC8847 /* ComeInViewController.swift in Sources */,
 				48180C242C4BD41100FC8847 /* UserData.swift in Sources */,
+				48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */,
 				48180C002C4BA55E00FC8847 /* AppDelegate.swift in Sources */,
 				48180C1D2C4BADB100FC8847 /* CustomStackView.swift in Sources */,
 				48180C022C4BA55E00FC8847 /* SceneDelegate.swift in Sources */,
+				48180C2F2C4D017400FC8847 /* ComeInPresenter.swift in Sources */,
 				48180C202C4BB09C00FC8847 /* StackView+Ex.swift in Sources */,
 				48180C192C4BAB0700FC8847 /* CustomButton.swift in Sources */,
 			);
