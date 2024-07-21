@@ -18,6 +18,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = RegistrationViewController()
         window?.makeKeyAndVisible()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeRegisterViewController(notification: )), name: NSNotification.Name("ChangeRegisterViewController"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeComeInViewController(notification: )), name: NSNotification.Name("ChangeComeInViewController"), object: nil)
+    }
+    
+    @objc func changeRegisterViewController(notification: Notification) {
+        window?.rootViewController = ComeInViewController()
+        window?.makeKeyAndVisible()
+    }
+    
+    @objc func changeComeInViewController(notification: Notification) {
+        let navigationController = UINavigationController(rootViewController: ProfileViewController())
+        navigationController.navigationBar.prefersLargeTitles = true
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
