@@ -24,7 +24,7 @@ final class CustomLabel {
         label.text = text
         label.textAlignment = .center
         label.textColor = .gray
-        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
     }
 }

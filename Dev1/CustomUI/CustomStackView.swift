@@ -8,13 +8,13 @@
 import UIKit
 
 final class CustomStackView {
-    static func createVerticalStack() -> UIStackView {
+    static func createVerticalStack(distribution: UIStackView.Distribution, spacing: CGFloat = 15) -> UIStackView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = distribution
         stackView.alignment = .fill
-        stackView.spacing = 15
+        stackView.spacing = spacing
         return stackView
     }
     
