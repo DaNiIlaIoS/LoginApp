@@ -30,13 +30,4 @@ final class ComeInPresenter: ComeInPresenterProtocol {
             view?.showError()
         }
     }
-    
-    func showNextViewController() {
-        
-    }
-    
-    func showError() {
-        // TODO: Alert Controller
-        print("error")
-    }
 }
