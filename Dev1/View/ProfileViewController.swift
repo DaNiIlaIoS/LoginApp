@@ -21,8 +21,8 @@ final class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var nameLabel = CustomLabel.createLabel(text: "Daniil Sivozelezov")
-    private lazy var mailLabel = CustomLabel.createSubtitle(text: "sivozelezov@gmail.com")
+    private lazy var nameLabel = CustomLabel.createLabel(text: userData.name ?? "")
+    private lazy var mailLabel = CustomLabel.createSubtitle(text: userData.mail ?? "")
     private lazy var infoStackView = CustomStackView.createVerticalStack(distribution: .fillEqually, spacing: 0)
     
     private lazy var myAccountButton = CustomButton.createProfileButton(image: "person", title: "Мой аккаунт")
@@ -37,7 +37,7 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
-    var name: String = ""
+    private let userData = UserData.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
