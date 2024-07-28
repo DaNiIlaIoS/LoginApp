@@ -23,20 +23,11 @@ final class ComeInPresenter: ComeInPresenterProtocol {
         guard let mail = mail, let password = password else { return }
         guard !mail.isEmpty, !password.isEmpty else { return }
         
-        if userData.mail == mail,
+        if userData.email == mail,
            userData.password == password {
             view?.showNextViewController()
         } else {
             view?.showError()
         }
-    }
-    
-    func showNextViewController() {
-        
-    }
-    
-    func showError() {
-        // TODO: Alert Controller
-        print("error")
     }
 }

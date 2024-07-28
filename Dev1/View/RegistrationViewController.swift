@@ -19,7 +19,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     private lazy var noAccountLabel = CustomLabel.createSubtitle(text: "Уже есть аккаунт?")
     
     private lazy var nameTextField = CustomTextField.createTextField(placeholder: "Имя", autocapitalizationType: .words)
-    private lazy var mailTextField = CustomTextField.createTextField(placeholder: "Почта", keyboardType: .emailAddress)
+    private lazy var emailTextField = CustomTextField.createTextField(placeholder: "Почта", keyboardType: .emailAddress)
     
     private lazy var passwordTextField: UITextField = {
         var showPasswordButton: UIButton = {
@@ -30,7 +30,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         }()
         
         let textField = CustomTextField.createTextField(placeholder: "Пароль")
-//        textField.isSecureTextEntry = true
+        textField.isSecureTextEntry = true
         textField.rightView = showPasswordButton
         textField.rightViewMode = .always
         return textField
@@ -80,7 +80,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         
         textFieldsStackView.addArrangedSubviews([titleLabel,
                                                nameTextField,
-                                               mailTextField,
+                                               emailTextField,
                                                passwordTextField,
                                                conditionLabel,
                                                registrationButton])
@@ -88,7 +88,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         horizontalStackView.addArrangedSubviews([noAccountLabel, comeInButton])
         
         nameTextField.delegate = self
-        mailTextField.delegate = self
+        emailTextField.delegate = self
         passwordTextField.delegate = self
         
         setupConstraints()
@@ -122,19 +122,19 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
     
     @objc func registerButtonTapped() {
-        presenter?.registerUser(name: nameTextField.text, mail: mailTextField.text, password: passwordTextField.text)
+        presenter?.registerUser(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func showNextViewController() {
-        NotificationCenter.default.post(Notification(name: Notification.Name("ChangeRegisterViewController")))
+        
     }
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if nameTextField.isFirstResponder {
-            mailTextField.becomeFirstResponder()
-        } else if mailTextField.isFirstResponder {
+            emailTextField.becomeFirstResponder()
+        } else if emailTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
         } else {
             view.endEditing(true)
