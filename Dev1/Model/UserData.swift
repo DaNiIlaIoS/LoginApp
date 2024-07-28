@@ -11,7 +11,7 @@ final class UserData {
     static let shared = UserData()
     private init() {}
     
-    var name: String?
-    var mail: String?
-    var password: String?
+    var name: String = ""
+    var email: String = ""
+    var password: String = ""
 }
