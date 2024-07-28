@@ -8,32 +8,47 @@
 import Foundation
 
 protocol RegistrationPresenterProtocol: AnyObject {
-    func registerUser(name: String?, mail: String?, password: String?)
+    func saveUserData(name: String?, email: String?, password: String?)
+    func registerNewUser()
 }
 
 final class RegistrationPresenter: RegistrationPresenterProtocol {
     
     private let userData = UserData.shared
+    private let registerModel = RegistrationModel()
     weak var view: RegistrationViewProtocol?
     
     init(view: RegistrationViewProtocol) {
         self.view = view
     }
     
-    func registerUser(name: String?, mail: String?, password: String?) {
-        guard let name = name, let mail = mail, let password = password else {
+    func saveUserData(name: String?, email: String?, password: String?) {
+        guard let name = name, let email = email, let password = password else {
             print("User data is nil")
             return
         }
-        guard !name.isEmpty, !mail.isEmpty, !password.isEmpty else {
+        guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
             print("Please fill in all fields")
             return
         }
         
         userData.name = name
-        userData.mail = mail
+        userData.email = email
         userData.password = password
+    }
+    
+    func registerNewUser() {
+        let regData = UserRegData(name: userData.name, email: userData.email, password: userData.password)
         
-        view?.showNextViewController()
+        self.registerModel.createUser(user: regData) { result in
+            switch result {
+            case .success(let success):
+                if success {
+                    NotificationCenter.default.post(Notification(name: Notification.Name("ChangeRegisterViewController")))
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
 }

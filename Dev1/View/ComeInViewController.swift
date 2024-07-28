@@ -16,7 +16,7 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
     
     // MARK: - GUI Variables
     private lazy var comeInLabel = CustomLabel.createLabel(text: "Войти")
-    private lazy var mailTextField = CustomTextField.createTextField(placeholder: "Почта", keyboardType: .emailAddress)
+    private lazy var emailTextField = CustomTextField.createTextField(placeholder: "Почта", keyboardType: .emailAddress)
     
     private lazy var passwordTextField: UITextField = {
         var showPasswordButton: UIButton = {
@@ -61,7 +61,7 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
         view.addSubview(horizontalStackView)
         
         verticalStackView.addArrangedSubviews([comeInLabel,
-                                              mailTextField,
+                                              emailTextField,
                                               passwordTextField,
                                                UIView(),
                                               comeInButton])
@@ -91,7 +91,7 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
     }
     
     @objc func comeInButtonAction() {
-        presenter?.checkUserData(mail: mailTextField.text, password: passwordTextField.text)
+        presenter?.checkUserData(mail: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func showPassword() {
