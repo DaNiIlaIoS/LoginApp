@@ -122,8 +122,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
     
     @objc func registerButtonTapped() {
-        presenter?.saveUserData(name: nameTextField.text, mail: emailTextField.text, password: passwordTextField.text)
-        presenter?.registerNewUser()
+        presenter?.registerUser(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func showNextViewController() {
