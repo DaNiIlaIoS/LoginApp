@@ -13,9 +13,9 @@ protocol ComeInPresenterProtocol: AnyObject {
 
 final class ComeInPresenter: ComeInPresenterProtocol {
     private let userData = UserData.shared
-    weak var view: ComeInViewProtocol?
+    weak var view: SignInViewProtocol?
     
-    init(view: ComeInViewProtocol?) {
+    init(view: SignInViewProtocol?) {
         self.view = view
     }
     
