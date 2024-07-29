@@ -19,13 +19,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = RegistrationViewController()
         window?.makeKeyAndVisible()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(changeRegisterViewController(notification: )), name: NSNotification.Name("ChangeRegisterViewController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openRegisterViewController(notification: )), name: NSNotification.Name("OpenRegistrationViewController"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(changeComeInViewController(notification: )), name: NSNotification.Name("ChangeComeInViewController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeRegisterViewController(notification: )), name: NSNotification.Name("OpenSignInViewController"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeComeInViewController(notification: )), name: NSNotification.Name("OpenProfileViewController"), object: nil)
+    }
+    
+    @objc func openRegisterViewController(notification: Notification) {
+        window?.rootViewController = RegistrationViewController()
+        window?.makeKeyAndVisible()
     }
     
     @objc func changeRegisterViewController(notification: Notification) {
-        window?.rootViewController = ComeInViewController()
+        window?.rootViewController = SignInViewController()
         window?.makeKeyAndVisible()
     }
     

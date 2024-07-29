@@ -41,7 +41,7 @@ final class RegistrationPresenter: RegistrationPresenterProtocol {
             switch result {
             case .success(let success):
                 if success {
-                    NotificationCenter.default.post(Notification(name: Notification.Name("ChangeRegisterViewController")))
+                    NotificationCenter.default.post(Notification(name: Notification.Name("OpenSignInViewController")))
                 }
             case .failure(let failure):
                 print(failure.localizedDescription)

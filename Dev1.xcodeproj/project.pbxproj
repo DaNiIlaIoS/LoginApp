@@ -13,6 +13,7 @@
 		48120E462C5646060023B0D3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 48120E452C5646060023B0D3 /* FirebaseStorage */; };
 		48120E482C56466D0023B0D3 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48120E472C56466D0023B0D3 /* RegistrationModel.swift */; };
 		48120E4A2C5647AB0023B0D3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48120E492C5647AB0023B0D3 /* FirebaseAuth */; };
+		48120E5A2C57801B0023B0D3 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48120E592C57801B0023B0D3 /* SignInModel.swift */; };
 		48180C002C4BA55E00FC8847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180BFF2C4BA55E00FC8847 /* AppDelegate.swift */; };
 		48180C022C4BA55E00FC8847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C012C4BA55E00FC8847 /* SceneDelegate.swift */; };
 		48180C042C4BA55E00FC8847 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C032C4BA55E00FC8847 /* RegistrationViewController.swift */; };
@@ -24,7 +25,7 @@
 		48180C1D2C4BADB100FC8847 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1C2C4BADB100FC8847 /* CustomStackView.swift */; };
 		48180C202C4BB09C00FC8847 /* StackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */; };
 		48180C242C4BD41100FC8847 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C232C4BD41100FC8847 /* UserData.swift */; };
-		48180C262C4BD7B800FC8847 /* ComeInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C252C4BD7B800FC8847 /* ComeInViewController.swift */; };
+		48180C262C4BD7B800FC8847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C252C4BD7B800FC8847 /* SignInViewController.swift */; };
 		48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */; };
 		48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */; };
 		48180C2F2C4D017400FC8847 /* ComeInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2E2C4D017400FC8847 /* ComeInPresenter.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		48120E3D2C5645440023B0D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48120E472C56466D0023B0D3 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		48120E592C57801B0023B0D3 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		48180BFC2C4BA55E00FC8847 /* Dev1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48180BFF2C4BA55E00FC8847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48180C012C4BA55E00FC8847 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		48180C1C2C4BADB100FC8847 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Ex.swift"; sourceTree = "<group>"; };
 		48180C232C4BD41100FC8847 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		48180C252C4BD7B800FC8847 /* ComeInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComeInViewController.swift; sourceTree = "<group>"; };
+		48180C252C4BD7B800FC8847 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		48180C2E2C4D017400FC8847 /* ComeInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComeInPresenter.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				48180C232C4BD41100FC8847 /* UserData.swift */,
 				48120E472C56466D0023B0D3 /* RegistrationModel.swift */,
+				48120E592C57801B0023B0D3 /* SignInModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				48180C032C4BA55E00FC8847 /* RegistrationViewController.swift */,
-				48180C252C4BD7B800FC8847 /* ComeInViewController.swift */,
+				48180C252C4BD7B800FC8847 /* SignInViewController.swift */,
 				48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */,
 			);
 			path = View;
@@ -241,7 +244,7 @@
 				48180C042C4BA55E00FC8847 /* RegistrationViewController.swift in Sources */,
 				48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */,
 				48120E482C56466D0023B0D3 /* RegistrationModel.swift in Sources */,
-				48180C262C4BD7B800FC8847 /* ComeInViewController.swift in Sources */,
+				48180C262C4BD7B800FC8847 /* SignInViewController.swift in Sources */,
 				48180C242C4BD41100FC8847 /* UserData.swift in Sources */,
 				48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */,
 				48180C002C4BA55E00FC8847 /* AppDelegate.swift in Sources */,
@@ -250,6 +253,7 @@
 				48180C2F2C4D017400FC8847 /* ComeInPresenter.swift in Sources */,
 				48180C202C4BB09C00FC8847 /* StackView+Ex.swift in Sources */,
 				48180C192C4BAB0700FC8847 /* CustomButton.swift in Sources */,
+				48120E5A2C57801B0023B0D3 /* SignInModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

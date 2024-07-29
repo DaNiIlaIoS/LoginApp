@@ -9,7 +9,7 @@ import UIKit
 
 protocol RegistrationViewProtocol: AnyObject {
     func showError()
-    func showNextViewController()
+    func signInButtonAction()
 }
 
 class RegistrationViewController: UIViewController, RegistrationViewProtocol {
@@ -52,9 +52,9 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         return button
     }()
     
-    private lazy var comeInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = CustomButton.createSubButton(title: "Войти".uppercased())
-        button.addTarget(self, action: #selector(showNextViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
     
@@ -85,7 +85,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
                                                conditionLabel,
                                                registrationButton])
         
-        horizontalStackView.addArrangedSubviews([noAccountLabel, comeInButton])
+        horizontalStackView.addArrangedSubviews([noAccountLabel, signInButton])
         
         nameTextField.delegate = self
         emailTextField.delegate = self
@@ -125,8 +125,8 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         presenter?.registerUser(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text)
     }
     
-    @objc func showNextViewController() {
-        
+    @objc func signInButtonAction() {
+        NotificationCenter.default.post(Notification(name: Notification.Name("OpenSignInViewController")))
     }
 }
 
