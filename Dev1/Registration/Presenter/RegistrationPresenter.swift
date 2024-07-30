@@ -35,7 +35,7 @@ final class RegistrationPresenter: RegistrationPresenterProtocol {
         userData.email = email
         userData.password = password
         
-        let regData = UserRegData(name: userData.name, email: userData.email, password: userData.password)
+        let regData = UserRegData(name: name, email: email, password: password)
         
         self.registerModel.createUser(user: regData) { result in
             switch result {

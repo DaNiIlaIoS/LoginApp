@@ -21,8 +21,8 @@ final class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var nameLabel = CustomLabel.createLabel(text: userData.name)
-    private lazy var mailLabel = CustomLabel.createSubtitle(text: userData.email)
+    private lazy var nameLabel = CustomLabel.createLabel(text: "")
+    private lazy var mailLabel = CustomLabel.createSubtitle(text: presenter.email ?? "")
     private lazy var infoStackView = CustomStackView.createVerticalStack(distribution: .fillEqually, spacing: 0)
     
     private lazy var myAccountButton = CustomButton.createProfileButton(image: "person", title: "Мой аккаунт")
@@ -37,7 +37,7 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
-    private let userData = UserData.shared
+    private let presenter: ProfilePresenterProtocol = ProfilePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,12 +77,12 @@ final class ProfileViewController: UIViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
             exitButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            exitButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor),
-            exitButton.trailingAnchor.constraint(equalTo: buttonsStackView.trailingAnchor)
+            exitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            exitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
     }
     
     @objc func exitButtonAction() {
-        NotificationCenter.default.post(Notification(name: Notification.Name("ChangeRegisterViewController")))
+        presenter.signOut()
     }
 }
