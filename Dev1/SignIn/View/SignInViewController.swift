@@ -1,5 +1,5 @@
 //
-//  ComeInViewController.swift
+//  SignInViewController.swift
 //  Dev1
 //
 //  Created by Даниил Сивожелезов on 20.07.2024.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol ComeInViewProtocol: AnyObject {
+protocol SignInViewProtocol: AnyObject {
     func showNextViewController()
-    func showError()
+    func showError(message: String)
 }
 
-final class ComeInViewController: UIViewController, ComeInViewProtocol {
+final class SignInViewController: UIViewController, SignInViewProtocol {
     
     // MARK: - GUI Variables
     private lazy var comeInLabel = CustomLabel.createLabel(text: "Войти")
@@ -26,20 +26,39 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
             return button
         }()
         
+        let rightViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+        rightViewContainer.addSubview(showPasswordButton)
+        
+        rightViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        showPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            rightViewContainer.widthAnchor.constraint(equalToConstant: 50),
+            rightViewContainer.heightAnchor.constraint(equalToConstant: 50),
+            
+            showPasswordButton.trailingAnchor.constraint(equalTo: rightViewContainer.trailingAnchor, constant: -15),
+            showPasswordButton.centerYAnchor.constraint(equalTo: rightViewContainer.centerYAnchor),
+        ])
+        
         let textField = CustomTextField.createTextField(placeholder: "Пароль")
-        textField.rightView = showPasswordButton
+        textField.rightView = rightViewContainer
+        textField.isSecureTextEntry = true
         textField.rightViewMode = .always
         return textField
     }()
     
-    private lazy var comeInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = CustomButton.createMainButton(title: "Войти")
-        button.addTarget(self, action: #selector(comeInButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
     
     private lazy var createAccountLabel = CustomLabel.createSubtitle(text: "У вас нет аккаунта?")
-    private lazy var registerButton = CustomButton.createSubButton(title: "Регистрация")
+    private lazy var registerButton: UIButton = {
+        let button = CustomButton.createSubButton(title: "Регистрация")
+        button.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var verticalStackView = CustomStackView.createVerticalStack(distribution: .fillEqually)
     private lazy var horizontalStackView = CustomStackView.createHorizontalStack()
@@ -50,7 +69,7 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ComeInPresenter(view: self)
+        presenter = SignInPresenter(view: self)
         setupUI()
     }
     
@@ -64,7 +83,7 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
                                               emailTextField,
                                               passwordTextField,
                                                UIView(),
-                                              comeInButton])
+                                              signInButton])
         horizontalStackView.addArrangedSubviews([createAccountLabel,
                                                 registerButton])
         setupConstraints()
@@ -82,16 +101,23 @@ final class ComeInViewController: UIViewController, ComeInViewProtocol {
         ])
     }
     
-    func showError() {
-        // TODO: alert controller
+    func showError(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
     
     func showNextViewController() {
-        NotificationCenter.default.post(Notification(name: Notification.Name("ChangeComeInViewController")))
+        NotificationCenter.default.post(Notification(name: Notification.Name("OpenProfileViewController")))
     }
     
-    @objc func comeInButtonAction() {
-        presenter?.checkUserData(mail: emailTextField.text, password: passwordTextField.text)
+    @objc func registerButtonAction() {
+        NotificationCenter.default.post(Notification(name: Notification.Name("OpenRegistrationViewController")))
+    }
+    
+    @objc func signInButtonAction() {
+        presenter?.checkUserData(email: emailTextField.text, password: passwordTextField.text)
     }
     
     @objc func showPassword() {
