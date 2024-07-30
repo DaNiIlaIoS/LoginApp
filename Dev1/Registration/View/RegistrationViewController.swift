@@ -9,7 +9,7 @@ import UIKit
 
 protocol RegistrationViewProtocol: AnyObject {
     func showError()
-    func showNextViewController()
+    func signInButtonAction()
 }
 
 class RegistrationViewController: UIViewController, RegistrationViewProtocol {
@@ -29,9 +29,23 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
             return button
         }()
         
+        let rightViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+        rightViewContainer.addSubview(showPasswordButton)
+        
+        rightViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        showPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            rightViewContainer.widthAnchor.constraint(equalToConstant: 50),
+            rightViewContainer.heightAnchor.constraint(equalToConstant: 50),
+            
+            showPasswordButton.trailingAnchor.constraint(equalTo: rightViewContainer.trailingAnchor, constant: -15),
+            showPasswordButton.centerYAnchor.constraint(equalTo: rightViewContainer.centerYAnchor),
+        ])
+        
         let textField = CustomTextField.createTextField(placeholder: "Пароль")
         textField.isSecureTextEntry = true
-        textField.rightView = showPasswordButton
+        textField.rightView = rightViewContainer
         textField.rightViewMode = .always
         return textField
     }()
@@ -52,9 +66,9 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         return button
     }()
     
-    private lazy var comeInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = CustomButton.createSubButton(title: "Войти".uppercased())
-        button.addTarget(self, action: #selector(showNextViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonAction), for: .touchUpInside)
         return button
     }()
     
@@ -85,7 +99,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
                                                conditionLabel,
                                                registrationButton])
         
-        horizontalStackView.addArrangedSubviews([noAccountLabel, comeInButton])
+        horizontalStackView.addArrangedSubviews([noAccountLabel, signInButton])
         
         nameTextField.delegate = self
         emailTextField.delegate = self
@@ -122,12 +136,11 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
     
     @objc func registerButtonTapped() {
-        presenter?.saveUserData(name: nameTextField.text, mail: emailTextField.text, password: passwordTextField.text)
-        presenter?.registerNewUser()
+        presenter?.registerUser(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text)
     }
     
-    @objc func showNextViewController() {
-        
+    @objc func signInButtonAction() {
+        NotificationCenter.default.post(Notification(name: Notification.Name("OpenSignInViewController")))
     }
 }
 
