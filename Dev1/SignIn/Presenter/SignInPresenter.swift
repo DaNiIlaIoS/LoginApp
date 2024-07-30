@@ -28,7 +28,7 @@ final class SignInPresenter: ComeInPresenterProtocol {
         
         signInModel.signIn(userData: userData) { [weak self] result in
             switch result {
-            case .success(let success):
+            case .success(let _):
                 self?.view?.showNextViewController()
             case .failure(let failure):
                 self?.view?.showError(message: failure.localizedDescription)

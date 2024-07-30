@@ -26,7 +26,6 @@
 		48180C1B2C4BACE400FC8847 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1A2C4BACE400FC8847 /* CustomLabel.swift */; };
 		48180C1D2C4BADB100FC8847 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1C2C4BADB100FC8847 /* CustomStackView.swift */; };
 		48180C202C4BB09C00FC8847 /* StackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */; };
-		48180C242C4BD41100FC8847 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C232C4BD41100FC8847 /* UserData.swift */; };
 		48180C262C4BD7B800FC8847 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C252C4BD7B800FC8847 /* SignInViewController.swift */; };
 		48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */; };
 		48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */; };
@@ -51,7 +50,6 @@
 		48180C1A2C4BACE400FC8847 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		48180C1C2C4BADB100FC8847 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		48180C1F2C4BB09C00FC8847 /* StackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Ex.swift"; sourceTree = "<group>"; };
-		48180C232C4BD41100FC8847 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		48180C252C4BD7B800FC8847 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		48180C2A2C4C01CD00FC8847 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		48180C2C2C4CE23C00FC8847 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				48120E662C57E50E0023B0D3 /* App */,
-				48180C132C4BA7FD00FC8847 /* Model */,
 				48120E5B2C57E45C0023B0D3 /* Registration */,
 				48120E5F2C57E48B0023B0D3 /* SignIn */,
 				48180C142C4BA80300FC8847 /* Profile */,
@@ -214,14 +211,6 @@
 				48180C0D2C4BA55F00FC8847 /* Info.plist */,
 			);
 			path = Dev1;
-			sourceTree = "<group>";
-		};
-		48180C132C4BA7FD00FC8847 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				48180C232C4BD41100FC8847 /* UserData.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		48180C142C4BA80300FC8847 /* Profile */ = {
@@ -339,7 +328,6 @@
 				48180C2B2C4C01CD00FC8847 /* RegistrationPresenter.swift in Sources */,
 				48120E482C56466D0023B0D3 /* RegistrationModel.swift in Sources */,
 				48180C262C4BD7B800FC8847 /* SignInViewController.swift in Sources */,
-				48180C242C4BD41100FC8847 /* UserData.swift in Sources */,
 				48180C2D2C4CE23C00FC8847 /* ProfileViewController.swift in Sources */,
 				48180C002C4BA55E00FC8847 /* AppDelegate.swift in Sources */,
 				48180C1D2C4BADB100FC8847 /* CustomStackView.swift in Sources */,
