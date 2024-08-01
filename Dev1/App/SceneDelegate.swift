@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         if appModel.isUserLogin() {
-            window?.rootViewController = ProfileViewController()
+            let navigationController = UINavigationController(rootViewController: ProfileViewController())
+            navigationController.navigationBar.prefersLargeTitles = true
+            window?.rootViewController = navigationController
         } else {
             window?.rootViewController = SignInViewController()
         }
