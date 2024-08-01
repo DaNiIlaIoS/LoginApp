@@ -10,15 +10,30 @@ import UIKit
 final class ProfileViewController: UIViewController {
     
     private lazy var avatarImage: UIImageView = {
-       let image = UIImageView()
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(tapToImage))
+        
+        let image = UIImageView()
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(tapImage)
         image.image = .avatar
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.heightAnchor.constraint(equalToConstant: 150).isActive = true
         image.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        image.layer.borderColor = UIColor.white.cgColor // Цвет обводки
+        image.layer.borderWidth = 2.0 // Ширина обводки
         image.layer.cornerRadius = 75
         return image
+    }()
+    
+    private lazy var imagePicker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        return picker
     }()
     
     private lazy var nameLabel = CustomLabel.createLabel(text: "")
@@ -57,8 +72,8 @@ final class ProfileViewController: UIViewController {
         
         infoStackView.addArrangedSubviews([nameLabel, mailLabel])
         buttonsStackView.addArrangedSubviews([myAccountButton,
-                                             settingsButton,
-                                             helpButton])
+                                              settingsButton,
+                                              helpButton])
         
         setupConstraints()
     }
@@ -82,7 +97,21 @@ final class ProfileViewController: UIViewController {
         ])
     }
     
+    @objc func tapToImage() {
+        print(1)
+        present(imagePicker, animated: true)
+    }
+    
     @objc func exitButtonAction() {
         presenter.signOut()
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            self.avatarImage.image = image
+        }
+        picker.dismiss(animated: true)
     }
 }
