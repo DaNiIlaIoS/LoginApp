@@ -13,7 +13,6 @@ protocol RegistrationPresenterProtocol: AnyObject {
 
 final class RegistrationPresenter: RegistrationPresenterProtocol {
     
-    private let userData = UserData.shared
     private let registerModel = RegistrationModel()
     weak var view: RegistrationViewProtocol?
     
@@ -30,10 +29,6 @@ final class RegistrationPresenter: RegistrationPresenterProtocol {
             print("Please fill in all fields")
             return
         }
-        
-        userData.name = name
-        userData.email = email
-        userData.password = password
         
         let regData = UserRegData(name: name, email: email, password: password)
         

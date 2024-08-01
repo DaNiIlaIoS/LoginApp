@@ -36,19 +36,31 @@ final class CustomButton {
     }
     
     static func createProfileButton(image: String?, title: String) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.backgroundColor = .gray
-        button.setTitle(title, for: .normal)
-        button.setImage(UIImage(systemName: image ?? ""), for: .normal)
-        button.tintColor = .white
-        button.layer.cornerRadius = 5
-        button.contentHorizontalAlignment = .leading
+        let buttonConfig: UIButton.Configuration = {
+            let config = UIButton.Configuration.plain()
+            return config
+        }()
         
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
-        
-        return button
+        return {
+            let button = UIButton(configuration: buttonConfig)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            button.backgroundColor = .gray
+            button.setTitle(title, for: .normal)
+            button.setImage(UIImage(systemName: image ?? ""), for: .normal)
+            button.tintColor = .white
+            button.layer.cornerRadius = 5
+            
+            button.contentHorizontalAlignment = .leading
+            button.configuration?.imagePlacement = .leading
+            button.configuration?.imagePadding = 20
+            button.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
+                var outgoing = incoming
+                outgoing.font = UIFont.systemFont(ofSize: 17)
+                return outgoing
+            })
+            
+            return button
+        }()
     }
 }
