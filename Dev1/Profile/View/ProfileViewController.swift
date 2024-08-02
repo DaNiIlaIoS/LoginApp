@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
-final class ProfileViewController: UIViewController {
+protocol ProfileViewProtocol: AnyObject {
+    var presenter: ProfilePresenterProtocol! { get }
+    func setAvatar(url: URL)
+}
+
+final class ProfileViewController: UIViewController, ProfileViewProtocol {
     
     private lazy var avatarImage: UIImageView = {
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(tapToImage))
@@ -15,7 +21,6 @@ final class ProfileViewController: UIViewController {
         let image = UIImageView()
         image.isUserInteractionEnabled = true
         image.addGestureRecognizer(tapImage)
-        image.image = .avatar
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +30,7 @@ final class ProfileViewController: UIViewController {
         image.layer.borderColor = UIColor.white.cgColor // Цвет обводки
         image.layer.borderWidth = 2.0 // Ширина обводки
         image.layer.cornerRadius = 75
+        
         return image
     }()
     
@@ -37,7 +43,7 @@ final class ProfileViewController: UIViewController {
     }()
     
     private lazy var nameLabel = CustomLabel.createLabel(text: "")
-    private lazy var mailLabel = CustomLabel.createSubtitle(text: presenter.email ?? "")
+    private lazy var emailLabel = CustomLabel.createSubtitle(text: presenter.email ?? "")
     private lazy var infoStackView = CustomStackView.createVerticalStack(distribution: .fillEqually, spacing: 0)
     
     private lazy var myAccountButton = CustomButton.createProfileButton(image: "person", title: "Мой аккаунт")
@@ -52,10 +58,16 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
-    private let presenter: ProfilePresenterProtocol = ProfilePresenter()
+    var presenter: ProfilePresenterProtocol!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.loadImageUrl()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = ProfilePresenter(view: self)
         
         setupUI()
     }
@@ -70,7 +82,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(buttonsStackView)
         view.addSubview(exitButton)
         
-        infoStackView.addArrangedSubviews([nameLabel, mailLabel])
+        infoStackView.addArrangedSubviews([nameLabel, emailLabel])
         buttonsStackView.addArrangedSubviews([myAccountButton,
                                               settingsButton,
                                               helpButton])
@@ -97,8 +109,11 @@ final class ProfileViewController: UIViewController {
         ])
     }
     
+    func setAvatar(url: URL) {
+        avatarImage.sd_setImage(with: url, placeholderImage: .avatar)
+    }
+    
     @objc func tapToImage() {
-        print(1)
         present(imagePicker, animated: true)
     }
     
@@ -111,6 +126,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             self.avatarImage.image = image
+            self.presenter.uploadImage(image: image)
         }
         picker.dismiss(animated: true)
     }
