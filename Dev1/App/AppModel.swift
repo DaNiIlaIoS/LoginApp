@@ -9,6 +9,12 @@ import Foundation
 import Firebase
 
 final class AppModel {
+    
+    static var userId: String {
+        guard let id = Auth.auth().currentUser?.uid else { return ""}
+        return id
+    }
+    
     func isUserLogin() -> Bool {
         return Auth.auth().currentUser?.uid != nil ? true : false
     }
