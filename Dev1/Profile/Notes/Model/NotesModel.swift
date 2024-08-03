@@ -11,7 +11,7 @@ import Firebase
 struct Note {
     let id: String
     let text: String?
-    let date: Date?
+    let date: Date
     let isActive: Bool
 }
 
@@ -47,8 +47,8 @@ final class NotesModel {
                     documents.forEach { document in
                         let id = document.documentID
                         let note = document["note"] as? String
-                        let timestamp = document["date"] as? Timestamp
-                        let date = timestamp?.dateValue()
+                        let timestamp = document["date"] as! Timestamp
+                        let date = timestamp.dateValue()
                         let isActive = document["isActive"] as! Bool
                         
                         let oneNote = Note(id: id, text: note, date: date, isActive: isActive)

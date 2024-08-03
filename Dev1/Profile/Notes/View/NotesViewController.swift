@@ -68,7 +68,7 @@ extension NotesViewController: UITableViewDataSource {
         
         var config = cell.defaultContentConfiguration()
         config.text = note.text
-        config.secondaryText = "\(note.date!)"
+        config.secondaryText = Date.formatDate(dateString: "\(note.date)")
         config.image = note.isActive ? UIImage(systemName: "checkmark") : nil
         
         cell.contentConfiguration = config
