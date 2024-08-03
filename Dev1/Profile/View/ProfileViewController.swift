@@ -46,7 +46,10 @@ final class ProfileViewController: UIViewController, ProfileViewProtocol {
     private lazy var emailLabel = CustomLabel.createSubtitle(text: presenter.email ?? "")
     private lazy var infoStackView = CustomStackView.createVerticalStack(distribution: .fillEqually, spacing: 0)
     
-    private lazy var myAccountButton = CustomButton.createProfileButton(image: "person", title: "Мой аккаунт")
+    private lazy var myAccountButton = CustomButton.createProfileButton(image: "list.bullet.clipboard", title: "Заметки", action: UIAction(handler: { [weak self] _ in
+        let notesVC = NotesViewController()
+        self?.navigationController?.pushViewController(notesVC, animated: true)
+    }))
     private lazy var settingsButton = CustomButton.createProfileButton(image: "gearshape", title: "Настройки")
     private lazy var helpButton = CustomButton.createProfileButton(image: "message", title: "Помощь")
     private lazy var buttonsStackView = CustomStackView.createVerticalStack(distribution: .fill)

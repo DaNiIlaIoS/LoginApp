@@ -35,14 +35,14 @@ final class CustomButton {
         return button
     }
     
-    static func createProfileButton(image: String?, title: String) -> UIButton {
+    static func createProfileButton(image: String?, title: String, action: UIAction? = nil) -> UIButton {
         let buttonConfig: UIButton.Configuration = {
             let config = UIButton.Configuration.plain()
             return config
         }()
         
         return {
-            let button = UIButton(configuration: buttonConfig)
+            let button = UIButton(configuration: buttonConfig, primaryAction: action)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: 50).isActive = true
             button.backgroundColor = .gray
