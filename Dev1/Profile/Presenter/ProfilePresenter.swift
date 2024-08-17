@@ -34,10 +34,20 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     func uploadImage(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         profileModel.uploadImage(image: imageData)
+        
+        //        if let imageData = image.pngData() {
+        //            print("Это изображение PNG")
+        //            profileModel.uploadImage(image: imageData)
+        //        } else if let imageData = image.jpegData(compressionQuality: 0.1) {
+        //            print("Это изображение JPEG")
+        //            profileModel.uploadImage(image: imageData)
+        //        } else {
+        //            print("Не удалось определить формат изображения")
+        //        }
     }
     
     func loadImageUrl() {
-        let image: UIImageView?
+        //        let image: UIImageView?
         profileModel.loadAvatarUrl { [weak self] result in
             switch result {
             case .success(let url):
